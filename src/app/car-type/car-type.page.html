@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Select Car's Model</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size = '6' *ngFor="let model of models">
+        <ion-card (click) = "selectModel(model)">
+          <ion-card-content>
+            <p>{{ model }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

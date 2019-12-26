@@ -1,0 +1,165 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Select Car's Make</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('honda')">
+          <ion-img [src]="'../../assets/Honda-logo-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('hyundai')">
+          <ion-img [src]="'../../assets/Hyundai-logo-silver-2560x1440.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('mahindra')">
+          <ion-img [src]="'../../assets/Mahindra-logo-2560x1440.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('nissan')">
+          <ion-img [src]="'../../assets/Nissan-logo-2013-1440x900.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('tata')">
+          <ion-img [src]="'../../assets/tata-png-3840x2160-hd-png-3840.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col >
+        <ion-card (click)="carClicked('suzuki')">
+          <ion-img [src]="'../../assets/Suzuki-logo-5000x2500.png'"></ion-img>
+        </ion-card>
+      </ion-col >
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('volkswagen')">
+          <ion-img [src]="'../../assets/Volkswagen-emblem-2014-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('renault')">
+          <ion-img [src]="'../../assets/renault-symbol-wallpaper-hd-40843-702065.jpg'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('chevrolet')">
+          <ion-img [src]="'../../assets/Chevrolet-logo-2013-2560x1440.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('bmw')">
+          <ion-img [src]="'../../assets/BMW-Logo.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('jaguar')">
+          <ion-img [src]="'../../assets/Jaguar-logo-2012-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('mini')">
+          <ion-img [src]="'../../assets/Mini-logo-2001-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('jeep')">
+          <ion-img [src]="'../../assets/Jeep-logo-green-3840x2160.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('landrover')">
+          <ion-img [src]="'../../assets/Land-Rover-logo-2011-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('mazda')">
+          <ion-img [src]="'../../assets/Mazda-logo-1997-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('mercedes')">
+          <ion-img [src]="'../../assets/Mercedes-Benz-logo-2011-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('kia')">
+          <ion-img [src]="'../../assets/Kia-logo-2560x1440.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('mitsubishi')">
+          <ion-img [src]="'../../assets/Mitsubishi-logo-1980x1020.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('rollsroyce')"> 
+          <ion-img [src]="'../../assets/rolls-royce-old-logo.jpg'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('skoda')">
+          <ion-img [src]="'../../assets/Skoda-logo-2016-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('ford')">
+          <ion-img [src]="'../../assets/Ford-logo-2003-1366x768.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="carClicked('audi')">
+          <ion-img [src]="'../../assets/audi.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('fiat')">
+          <ion-img [src]="'../../assets/download (1).jpg'"></ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="carClicked('lexus')">
+          <ion-img [src]="'../../assets/Lexus-logo-1988-1920x1080.png'"></ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>

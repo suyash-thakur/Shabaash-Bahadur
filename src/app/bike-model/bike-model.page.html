@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Select Bikes's Make</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click) = "bikeClick('hero')">
+          <ion-card-content>
+            <ion-img [src]= "'../../assets/Hero-MotoCorp-01.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click) = "bikeClick('honda')">
+          <ion-card-content>
+            <ion-img [src]= "'../../assets/honda-motors.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click) = "bikeClick('yamaha')">
+          <ion-card-content>
+            <ion-img [src]= "'../../assets/Yamaha-01.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click) = "bikeClick('ktm')">
+          <ion-card-content>
+            <ion-img [src]="'../../assets/KTM-01.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click) = "bikeClick('kawasaki')">
+          <ion-card-content>
+            <ion-img [src]="'../../assets/Kawasaki-01.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click) = "bikeClick('royalenfield')">
+          <ion-card-content>
+            <ion-img [src]="'../../assets/royal.jpg'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click) = "bikeClick('tvs')">
+          <ion-card-content>
+            <ion-img [src]="'../../assets/tvs-vector-logo.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content (click) = "bikeClick('suzuki')">
+            <ion-img [src]="'../../assets/suzuki-square.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content (click) = "bikeClick('bajaj')">
+            <ion-img [src]="'../../assets/Bajaj-01.png'"></ion-img>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Additional Info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid style="height: 100%;" >
+    <ion-row justify-content-center align-items-center style = "height: 70%;">
+      <div>
+ <ion-card>
+   <ion-card-content>
+  <ion-item>
+    <ion-label></ion-label>
+    <ion-input placeholder = "Vehicle Number" text-center #vehicleNum></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input placeholder = "Whatsapp Number" type="text" inputmode="tel" maxlength="10" text-center #whatsApp></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-datetime displayFormat="D MM YYYY" dayValues = "[1, 15]" max="2020-12-31" placeholder="Select Start Date" text-center [(ngModel)] = "date"></ion-datetime>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col style="text-align: center;">
+              <ion-button (click)= "paynow(vehicleNum.value, whatsApp.value)">Pay Now</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      </ion-card> 
+    </div>
+    </ion-row>
+    </ion-grid>
+    <agm-map 
+    [latitude]="latitude" 
+    [longitude]="longitude" 
+    [zoom]="zoom" >
+      <agm-marker 
+      [latitude]="latitude" 
+      [longitude]="longitude"></agm-marker>
+    </agm-map>
+</ion-content>
+

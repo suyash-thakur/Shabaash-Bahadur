@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid style="height: 100%;" >
+    <ion-row justify-content-center align-items-center style = "height: 100%;">
+      <div>
+  <ion-card>
+    <ion-card-content>
+  <ion-item>
+    <ion-input type="string" placeholder="Name" #name inputmode="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="email" placeholder="Email" #email inputmode="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" placeholder="Password" #password></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" placeholder="Confirm Password" #conpassword></ion-input>
+  </ion-item>
+  <br>
+  <ion-grid>
+    
+    <ion-row >
+      <ion-col style="text-align: center;">
+        <ion-button (click) = "onSignup(name.value, email.value, password.value, conpassword.value)">Next</ion-button>
+      </ion-col>
+    
+  </ion-row>
+  </ion-grid>
+</ion-card-content>
+</ion-card>
+<ion-grid>
+  <ion-row>
+    <ion-col style="text-align: center;">
+     <p> Already have an account ? </p>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col style="text-align: center;">
+      <a style="color: #F95D65;" routerLink="/login"><strong>Login</strong></a>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</div>
+</ion-row>
+</ion-grid>
+</ion-content>

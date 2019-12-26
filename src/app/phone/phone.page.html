@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Phone Verification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid style="height: 100%;" >
+    <ion-row justify-content-center align-items-center style = "height: 80%;">
+      <ion-card>
+        <ion-card-content>
+      <div [hidden]="user">      
+        <ion-item>
+        <ion-input type="text" [(ngModel)]="phoneNumber.phone" inputmode="tel" maxlength="10" placeholder="Phone Number"></ion-input>
+      </ion-item>
+        <div id="recaptcha-container"></div>
+        <ion-grid>
+          <ion-row>
+          <ion-col style="text-align: center;">
+        <ion-button (click)="sendLoginCode()">Send OTP</ion-button>
+      </ion-col>
+    </ion-row>
+      </ion-grid>
+      
+        <div *ngIf="windowRef.confirmationResult">
+          <hr>
+          <ion-item>
+          <ion-input type="text" name="code" [(ngModel)]="verificationCode" inputmode="num"></ion-input>
+        </ion-item>
+        <ion-grid>
+          <ion-row>
+          <ion-col style="text-align: center;">
+          <ion-button (click)="verifyLoginCode()">Verify</ion-button>
+          </ion-col>
+          </ion-row>
+          </ion-grid>
+        </div>
+      
+      </div>
+    </ion-card-content>
+    </ion-card>
+      
+      <div *ngIf="user">
+        You have successfully logged in with your phone number!
+      
+        UserId: {{ user?.uid }}
+      
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

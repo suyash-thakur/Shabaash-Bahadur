@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" >
+      <ion-back-button color="dark"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vehicle Type</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col style="text-align: center;">
+          <h1>Select Vehicle Type</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6" style="text-align: center;">
+          <ion-card  (click)="carClicked()">
+            <ion-card-content>
+          <ion-img [src]= "'../../assets/ezgif-1-e05c23ecb771.png'"></ion-img>
+          <br>
+          <ion-row style="text-align: center;">
+            <ion-col>
+              <p>Car</p>
+            </ion-col>
+          </ion-row>
+          <ion-row style="text-align: center;">
+            <ion-col>
+            <p>Rs 299</p>
+          </ion-col>
+          </ion-row>
+
+        </ion-card-content>
+        </ion-card >
+        </ion-col>
+        <ion-col size="6" style="text-align: center;">
+          <ion-card (click) = "bikeClicked()">
+            <ion-card-content>
+          <ion-img [src]= "'../../assets/ezgif-1-bbde50d28481.png'"></ion-img>
+          <ion-row style="text-align: center;">
+            <ion-col>
+             <p>Bike</p>
+        </ion-col>
+        </ion-row>
+        <ion-row style="text-align: center;">
+          <ion-col>
+          <p>Rs 149</p>
+        </ion-col>
+        </ion-row>
+        </ion-card-content>
+        </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row style="text-align: center;">
+        <ion-col>
+          <p style="color: #F95D65;">Extra 10% off for first 100 users</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
