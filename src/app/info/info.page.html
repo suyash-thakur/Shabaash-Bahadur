@@ -23,10 +23,13 @@
       <ion-item>
         <ion-datetime displayFormat="D MM YYYY" dayValues = "[1, 15]" max="2020-12-31" placeholder="Select Start Date" text-center [(ngModel)] = "date"></ion-datetime>
         </ion-item>
+        <ion-item>
+          <ion-textarea placeholder="Enter Address" [(ngModel)] = 'address' text-center></ion-textarea>
+          </ion-item>
         <ion-grid>
           <ion-row>
             <ion-col style="text-align: center;">
-              <ion-button (click)= "paynow(vehicleNum.value, whatsApp.value)">Pay Now</ion-button>
+              <ion-button (click)= "paynow(vehicleNum, whatsApp)">Pay Now</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -35,13 +38,14 @@
     </div>
     </ion-row>
     </ion-grid>
-    <agm-map 
+    <!-- <agm-map 
     [latitude]="latitude" 
     [longitude]="longitude" 
     [zoom]="zoom" >
       <agm-marker 
       [latitude]="latitude" 
       [longitude]="longitude"></agm-marker>
-    </agm-map>
+    </agm-map> -->
+
 </ion-content>
 

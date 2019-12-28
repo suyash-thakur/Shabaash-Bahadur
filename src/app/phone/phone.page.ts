@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 export class PhoneNumber {
   
-  countryCode = '+91';
+  countryCode = '91';
   phone: string;
 
   get e164() {
@@ -61,11 +61,9 @@ export class PhonePage implements OnInit {
 
                     this.user = result.user;
                     this.presentToast('Verified Successfully ');
-                    this.authService.authData.phone = this.phoneNumber.e164;
+                    this.authService.authData.phone = this.phoneNumber.phone;
                     console.log(this.authService.authData.phone);
                     this.route.navigate(['/vehicle-type']);
-                    
-                    
 
     })
     .catch( error => this.presentToast('Verification Unsuccessful'));

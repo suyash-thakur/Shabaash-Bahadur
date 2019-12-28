@@ -3,8 +3,10 @@ import { AuthenticationService } from '../authentication.service';
 import { PaymentModel } from '../Model/payment-model';
 import { AgmMap } from '@agm/core';
 import { HttpClient } from '@angular/common/http';
-import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
+import { Platform } from '@ionic/angular';
+import { InAppBrowser, InAppBrowserEvent, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import * as sha512 from 'js-sha512';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,78 +17,103 @@ import * as sha512 from 'js-sha512';
 export class InfoPage implements OnInit {
   date: Date;
   title = 'AGM project';
+  paymentString: any;
   latitude: number;
   longitude: number;
+  amount: String;
   encrypt: any;
+  name: any;
+
+
+  show = false;
+  txnid = Math.random() * 100;
+
   zoom: number;
   paymentModel: PaymentModel = new PaymentModel();
  token = {
 
  };
+  email: any;
+  txnId: any;
+  password: any;
+  vehicleType: any;
+  phone: any;
+  company: any;
+  registrationNumber: any;
+  whatsApp: any;
+  startDate: any;
+  address: any;
 
 
-  constructor(private authService: AuthenticationService, private http: HttpClient, private iab: InAppBrowser) { }
+  constructor(private authService: AuthenticationService, private http: HttpClient, private iab: InAppBrowser,
+              public platform: Platform, public router: Router) { }
 
   ngOnInit() {
-    this.setCurrentLocation();
+    if (this.authService.authData.vechileType === 'bike') {
+      this.amount = '149';
+    } else {
+      this.amount = '299';
+    }
+    this.name = this.authService.authData.name,
+    this.email = this.authService.authData.email,
+    this.password = this.authService.authData.password,
+    this.vehicleType = this.authService.authData.vechileType,
+    this.phone = this.authService.authData.phone,
+    this.company = this.authService.authData.company,
+    this.registrationNumber = this.authService.authData.registrationNumber,
+    this.whatsApp = this.authService.authData.whatsApp,
+    this.startDate = this.authService.authData.startDate,
+    this.txnId = this.authService.authData.txnId;
   }
+
   paynow(VehicleNum, whatsApp) {
     this.authService.authData.whatsApp = whatsApp;
     this.authService.authData.registrationNumber = VehicleNum;
-    this.authService.authData.startDate = this.date;
-    const name = '';
-    const mobile = '';
-    const email = '';
-    const bookingId = String(Math.floor(Math.random() * (99 - 10 + 1) + 10)) + String(1235);
-    const productInfo = 'this is testing';
-    const salt = 'BWxQfOQdtJ';
-    const key = 'Sn6dyVBD';
-    const amt = '100';
-    const surl = 'http://localhost:8100';
-    const furl = 'http://localhost:8100/info';
-    const service_provider = 'payu_paisa';
-    const udf1 = '';
-    const udf2 = '';
-    const udf3 = '';
-    const udf4 = '';
-    const udf5 = '';
-    const udf6 = '';
-    const udf7 = '';
-    const udf8 = '';
-    const udf9 = '';
-    const udf10 = '';
+    this.startDate = this.date;
 
-    const string = key + '|' + bookingId + '|' + amt + '|' + productInfo + '|' + name + '|' + email + '|' + udf1 + '|'
-     + udf2 + '|' + udf3 + '|' + udf4 + '|' + udf5 + '|' + udf6 + '|' + udf7 + '|' + udf8 + '|' + udf9 + '|' + udf10 + '|' + salt;
-    
-    this.encrypt = sha512.sha512(string);
-
-    const url = 'secure.payu.in/_payment?amt=' + amt + '&service_provider=' + service_provider +
-    '&name=' + name + '&surl=' + surl + '&furl=' + furl + '&mobileNo=' + mobile + '&email=' + email +
-    '&bookingId' + bookingId + '&productinfo=' + productInfo + '&hash=' + this.encrypt + +'&salt=' + salt + '&key=' + key;
-
-    let options: InAppBrowserOptions = {
-      location: 'yes',
-      clearcache: 'yes',
-      zoom: 'yes',
-      toolbar: 'no',
-      closebuttoncaption: 'back'
+    const info: any = {
+      name: 'name',
+      email: 'suyashthakur@gmail.com',
+      amount: this.amount,
+      phone: '9521408369',
+      txnid: this.txnid
     };
+    const user: any = {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+      vehicleType: this.vehicleType,
+      phone: this.phone,
+      company: this.company,
+      registrationNumber: this.registrationNumber,
+      whatsApp: this.whatsApp,
+      startDate: this.startDate,
+      address: this.address,
+      txnid: this.txnId
+     };
 
-    const browser: any = this.iab.create(url, '_blank', options);
 
-
-
-    console.log(this.authService.authData);
+    console.log(info);
+    this.http.post<{url: string}>('http://localhost:3000/api/auth/pay', info ).subscribe(data => {
+      console.log(data.url);
+      window.open(data.url, '_blank');
+    //   this.authService.createUser(this.authService.authData.name, this.authService.authData.email,
+    //     this.authService.authData.password, this.authService.authData.vechileType, this.authService.authData.phone,
+    //     this.authService.authData.company, this.authService.authData.registrationNumber, this.authService.authData.whatsApp,
+    //     this.authService.authData.startDate, this.authService.authData.txnid);
+      this.http.post('http://localhost:3000/api/auth/signup', user).subscribe(data => {
+      console.log(data);
+      this.router.navigate(['/payment']);
+    });
+    });
 
   }
-  private setCurrentLocation() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 15;
-      });
-    }
-  }
+  //   if ('geolocation' in navigator) {
+  //     navigator.geolocation.getCurrentPosition((position) => {
+  //       this.latitude = position.coords.latitude;
+  //       this.longitude = position.coords.longitude;
+  //       this.zoom = 15;
+  //     });
+  //   }
+  // }
 }

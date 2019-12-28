@@ -1,20 +1,29 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-
+const path = require("path");
+var payUMoney = require('payumoney_nodejs');
 const User  = require("../Model/User");
 const checkAuth = require("../Middleware/checkauth");
 
 
 const router = express.Router();
 
-router.post("/signup", (req, res, next) => {
+payUMoney.isProdMode(true);
+payUMoney.setProdKeys('Sn6dyVBD', 'BWxQfOQdtJ', '3UCR2y8rwQSvt6rUasR5HSeVxg+IKg5UaDYr0OApxlo=');
 
+router.post("/signup", (req, res, next) => {
+  console.log(req.body);
  bcrypt.hash(req.body.password, 10).then(hash => {
    const user = new User({
      name: req.body.name,
      email: req.body.email,
      password: hash,
+     vehicle: [{vehicleType: req.body.vehicleType, model: req.body.model, company: req.body.company, registrationNumber: req.body.registrationNumber}],
+     whatsApp: req.body.whatsApp,
+     startDate: req.body.startDate,
+     txnid: req.body.txnid,
+     address: req.body.address,
    });
    user
      .save()
@@ -86,6 +95,37 @@ router.put("/userUpdate:id",checkAuth, (req, res, next) => {
  User.updateOne({_id: req.params.id}, user).then(result => {
    res.status(200).json({ message: "Update successful!" });
  });
+});
+
+router.post('/pay', (req, res, next) => {
+  console.log(req.body);
+  var requestBody = {
+
+    "firstname" : req.body.name,
+    "lastname" : "",
+    "email" : req.body.email,
+    "phone" : req.body.phone,
+    "amount" : req.body.amount,
+    "productinfo" : "car Wash",
+    "txnid" : req.body.txnid, //generate unqiue transaction Id at client/server side
+    "surl" : "http:localhost:3000/app/success",
+    "furl" : "http:localhost:3000/fail"
+
+  };
+  payUMoney.pay(requestBody, function(error, data) {
+    if (error) {
+      console.log(data);
+    } else {
+      // You will get a link in response to redirect to payUMoney
+      console.log(data);
+      res.status(200).json({
+        url: data
+      });
+  
+  
+    }
+  });
+  
 });
 
 

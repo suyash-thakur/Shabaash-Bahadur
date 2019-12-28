@@ -5,23 +5,26 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 
+
 const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
+  url: any;
   authData: any = {
     name: String,
     email: String,
     password: String,
-    vechileType: String,
+    vehicleType: String,
     phone: String,
     company: String,
     model: String,
     registrationNumber: String,
     whatsApp: Number,
-    startDate: Date
+    startDate: Date,
+    txnId: String
 
   }
   
@@ -117,12 +120,15 @@ export class AuthenticationService {
     return this.authStatusListener.asObservable();
   }
   
-  createUser(email: string, password: string, name: string): Promise<any> {
+  createUser(name,  email, password, vehicleType, phone, company, registrationNumber, whatsApp, startDate, txnId): Promise<any> {
+   const user: any = {
+    name, email, password, vehicleType, phone, company, registrationNumber, whatsApp, startDate, txnId
+   };
+   
     return Promise.resolve((() => {
       // code here
-      const authData: any = {email, password, name };
-      this.http.post('http://localhost:3000/api/auth/signup', authData)
-    .subscribe(response => {
+      this.http.post('http://localhost:3000/api/auth/signup', user)
+.subscribe(response => {
         console.log(response);
     });
       return 'from first'; // return whatever you want not neccessory

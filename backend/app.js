@@ -2,8 +2,11 @@ const  express =  require('express');
 const  mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const path = require("path");
+var payUMoney = require('payumoney_nodejs');
 const authRoute = require("./Routes/auth");
 const app = express();
+
+const router = express.Router();
 
 mongoose.connect(
   "mongodb://localhost:27017")
@@ -25,6 +28,7 @@ app.use( (req, res, next) => {
 
   next();
 });
+
 
 app.use('/api/auth', authRoute);
 module.exports = app;

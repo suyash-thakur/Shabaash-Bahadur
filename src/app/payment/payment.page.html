@@ -1,0 +1,26 @@
+<ion-content>
+  <ion-grid >
+    <ion-row align-items-center justify-content-center>
+      <ion-col size="8">
+        <ion-img [src] = "'../../assets/logo.jpeg'" style="height: 300px;"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row align-items-center justify-content-center style="text-align: center;">
+      <ion-col>
+        <h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Thanks For Subscribing</h1>
+    </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <h3 style="color: #F95D65">We Will Get Back To You Soon</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row style="text-align: center;">
+      <ion-col>
+        <h5>
+          Transaction Id: SB451A{{ this.auth.authData.txnid }}
+        </h5>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
